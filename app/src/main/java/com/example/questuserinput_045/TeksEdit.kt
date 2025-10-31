@@ -100,7 +100,9 @@ fun FormDataDiri(modifier: Modifier)
 
         Divider(
             modifier = Modifier.padding(
-                bottom = dimensionResource(R.dimen.padding_medium))
+                bottom = dimensionResource(R.dimen.padding_medium),
+                top = dimensionResource(R.dimen.padding_medium
+                )),
         )
     }
 }

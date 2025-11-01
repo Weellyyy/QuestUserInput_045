@@ -254,10 +254,10 @@ fun ActivityForm(modifier: Modifier= Modifier)
             }
             Divider(
                 modifier = Modifier.padding(
-                    bottom = dimensionResource(R.dimen.padding_medium),
-                    top = dimensionResource(R.dimen.padding_medium
+                    bottom = dimensionResource(R.dimen.padding_small),
+                    top = dimensionResource(R.dimen.padding_small
                     )),
-                thickness = dimensionResource(R.dimen.padding_medium),
+                thickness = dimensionResource(R.dimen.divider_tipis),
                 color = Color.Black
             )
         }

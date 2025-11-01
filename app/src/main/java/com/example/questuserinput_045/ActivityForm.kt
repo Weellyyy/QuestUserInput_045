@@ -20,5 +20,15 @@ fun ActivityForm(modifier: Modifier= Modifier)
     var textUmur by remember { mutableStateOf("") }
     var textJenisKelamin by remember { mutableStateOf("") }
     var isSetujuChecked by remember { mutableStateOf(false) }
+
+    var namaLengkap by remember { mutableStateOf("") }
+    var kotaAsal by remember { mutableStateOf("") }
+    var tanggalLahir by remember { mutableStateOf("") }
+    var rt by remember { mutableStateOf("") }
+    var rw by remember { mutableStateOf("") }
+    var umur by remember { mutableStateOf("") }
+    var jenisKelamin by remember { mutableStateOf("")  }
+
+    val genderList = listOf("Laki-laki", "Perempuan" )
 }
 

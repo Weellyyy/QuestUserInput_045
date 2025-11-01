@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -71,6 +72,7 @@ fun ActivityForm(modifier: Modifier= Modifier) {
 
     val showDatePicker = remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState()
+    val showDataPopup = remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -310,6 +312,7 @@ fun ActivityForm(modifier: Modifier= Modifier) {
                     rw = textRw
                     umur = textUmur
                     jenisKelamin = textJenisKelamin
+                    showDataPopup.value = true
                 },
                 enabled =
                     textNamaLengkap.isNotEmpty() && textKotaAsal.isNotEmpty() && textTanggalLahir.isNotEmpty() && textRw.isNotEmpty() && textRt.isNotEmpty() && textUmur.isNotEmpty() && textJenisKelamin.isNotEmpty() && isSetujuChecked,
@@ -352,6 +355,27 @@ fun ActivityForm(modifier: Modifier= Modifier) {
         ) {
             DatePicker(state = datePickerState)
         }
+    }
+    if (showDataPopup.value) {
+        AlertDialog(
+            onDismissRequest = { showDataPopup.value = false },
+            title = { Text(text = "Data Berhasil Dikirim") },
+            text = {
+                Column {
+                    Text("Nama: $namaLengkap")
+                    Text("Asal: $kotaAsal")
+                    Text("Tanggal Lahir: $tanggalLahir")
+                    Text("RT/RW: $rt / $rw")
+                    Text("Umur: $umur")
+                    Text("Jenis Kelamin: $jenisKelamin")
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showDataPopup.value = false }) {
+                    Text("Tutup")
+                }
+            }
+        )
     }
 }
 

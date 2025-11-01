@@ -198,6 +198,27 @@ fun ActivityForm(modifier: Modifier= Modifier)
                     )
                 )
             }
+            TextField(
+                value = textUmur,
+                onValueChange = { textUmur = it },
+                label = { Text("Umur") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp),
+                shape = RoundedCornerShape(16.dp),
+                singleLine = true,
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White.copy(alpha = 0.3f),
+                    unfocusedContainerColor = Color.White.copy(alpha = 0.3f),
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    focusedLabelColor = Color.White,
+                    unfocusedLabelColor = Color.White.copy(alpha = 0.7f),
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    cursorColor = Color.White
+                )
+            )
         }
     }
 }

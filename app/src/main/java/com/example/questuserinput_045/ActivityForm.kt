@@ -9,9 +9,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
@@ -278,6 +281,32 @@ fun ActivityForm(modifier: Modifier= Modifier)
                 thickness = dimensionResource(R.dimen.divider_tipis),
                 color = Color.Black
             )
+            Button(
+                onClick = {
+                    namaLengkap = textNamaLengkap
+                    kotaAsal = textKotaAsal
+                    tanggalLahir = textTanggalLahir
+                    rt = textRt
+                    rw = textRw
+                    umur = textUmur
+                    jenisKelamin = textJenisKelamin
+                },
+                enabled =
+                    textNamaLengkap.isNotEmpty() && textKotaAsal.isNotEmpty() && textTanggalLahir.isNotEmpty() && textRw.isNotEmpty()  && textRt.isNotEmpty() && textUmur.isNotEmpty() && textJenisKelamin.isNotEmpty() && isSetujuChecked,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp),
+                shape = RoundedCornerShape(50),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White,
+                    contentColor = Color.Black,
+                    disabledContainerColor = Color.White.copy(alpha = 0.3f),
+                    disabledContentColor = Color.Black.copy(alpha = 0.5f)
+                )
+            ) {
+                Text("Submit",
+                    fontWeight = FontWeight.Bold)
+            }
         }
     }
 }

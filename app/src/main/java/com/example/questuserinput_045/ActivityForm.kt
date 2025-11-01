@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -79,6 +80,14 @@ fun ActivityForm(modifier: Modifier= Modifier)
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White)
+            Divider(
+                modifier = Modifier.padding(
+                    bottom = dimensionResource(R.dimen.padding_medium),
+                    top = dimensionResource(R.dimen.padding_medium
+                    )),
+                thickness = dimensionResource(R.dimen.divider_tipis),
+                color = Color.DarkGray
+            )
 
         }
     }

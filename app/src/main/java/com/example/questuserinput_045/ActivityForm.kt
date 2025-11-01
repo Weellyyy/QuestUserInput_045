@@ -17,11 +17,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.rememberDatePickerState
@@ -40,11 +43,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ActivityForm(modifier: Modifier= Modifier)
-{
+fun ActivityForm(modifier: Modifier= Modifier) {
     var textNamaLengkap by remember { mutableStateOf("") }
     var textKotaAsal by remember { mutableStateOf("") }
     var textTanggalLahir by remember { mutableStateOf("") }
@@ -60,9 +65,9 @@ fun ActivityForm(modifier: Modifier= Modifier)
     var rt by remember { mutableStateOf("") }
     var rw by remember { mutableStateOf("") }
     var umur by remember { mutableStateOf("") }
-    var jenisKelamin by remember { mutableStateOf("")  }
+    var jenisKelamin by remember { mutableStateOf("") }
 
-    val genderList = listOf("Laki-laki", "Perempuan" )
+    val genderList = listOf("Laki-laki", "Perempuan")
 
     val showDatePicker = remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState()
@@ -71,7 +76,7 @@ fun ActivityForm(modifier: Modifier= Modifier)
         modifier = Modifier
             .fillMaxSize(),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         Image(
             painter = painterResource(R.drawable.greenbg),
             contentDescription = null,
@@ -79,24 +84,28 @@ fun ActivityForm(modifier: Modifier= Modifier)
                 .fillMaxSize(),
             contentScale = ContentScale.Crop
         )
-        Column (
+        Column(
             modifier = modifier
                 .fillMaxWidth(0.9f)
                 .fillMaxWidth(0.9f)
                 .clip(RoundedCornerShape(32.dp))
-                .background(Color.White.copy(alpha = 0.2f))
+                .background(Color.White.copy(alpha = 0.1f))
                 .padding(horizontal = 24.dp, vertical = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Text("Form Pendaftaran Joki",
+        ) {
+            Text(
+                "Form Pendaftaran Joki",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White)
+                color = Color.White
+            )
             Divider(
                 modifier = Modifier.padding(
                     bottom = dimensionResource(R.dimen.padding_medium),
-                    top = dimensionResource(R.dimen.padding_medium
-                    )),
+                    top = dimensionResource(
+                        R.dimen.padding_medium
+                    )
+                ),
                 thickness = dimensionResource(R.dimen.divider_tipis),
                 color = Color.DarkGray
             )
@@ -186,8 +195,8 @@ fun ActivityForm(modifier: Modifier= Modifier)
                 )
                 TextField(
                     value = textRw,
-                    onValueChange = {textRw = it},
-                    label = {Text("RW")},
+                    onValueChange = { textRw = it },
+                    label = { Text("RW") },
                     modifier = Modifier
                         .weight(1f)
                         .padding(bottom = 10.dp),
@@ -260,24 +269,35 @@ fun ActivityForm(modifier: Modifier= Modifier)
             Divider(
                 modifier = Modifier.padding(
                     bottom = dimensionResource(R.dimen.padding_small),
-                    top = dimensionResource(R.dimen.padding_small
-                    )),
+                    top = dimensionResource(
+                        R.dimen.padding_small
+                    )
+                ),
                 thickness = dimensionResource(R.dimen.divider_tipis),
                 color = Color.Black
             )
-            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Checkbox(
                     checked = isSetujuChecked,
                     onCheckedChange = { isSetujuChecked = it },
-                    colors = CheckboxDefaults.colors(checkedColor = Color.White, uncheckedColor = Color.White.copy(alpha = 0.7f), checkmarkColor = Color.Black)
+                    colors = CheckboxDefaults.colors(
+                        checkedColor = Color.White,
+                        uncheckedColor = Color.White.copy(alpha = 0.7f),
+                        checkmarkColor = Color.Black
+                    )
                 )
                 Text("Saya setuju", color = Color.White.copy(alpha = 0.8f), fontSize = 12.sp)
             }
             Divider(
                 modifier = Modifier.padding(
                     bottom = dimensionResource(R.dimen.padding_small),
-                    top = dimensionResource(R.dimen.padding_small
-                    )),
+                    top = dimensionResource(
+                        R.dimen.padding_small
+                    )
+                ),
                 thickness = dimensionResource(R.dimen.divider_tipis),
                 color = Color.Black
             )
@@ -292,7 +312,7 @@ fun ActivityForm(modifier: Modifier= Modifier)
                     jenisKelamin = textJenisKelamin
                 },
                 enabled =
-                    textNamaLengkap.isNotEmpty() && textKotaAsal.isNotEmpty() && textTanggalLahir.isNotEmpty() && textRw.isNotEmpty()  && textRt.isNotEmpty() && textUmur.isNotEmpty() && textJenisKelamin.isNotEmpty() && isSetujuChecked,
+                    textNamaLengkap.isNotEmpty() && textKotaAsal.isNotEmpty() && textTanggalLahir.isNotEmpty() && textRw.isNotEmpty() && textRt.isNotEmpty() && textUmur.isNotEmpty() && textJenisKelamin.isNotEmpty() && isSetujuChecked,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
@@ -304,10 +324,35 @@ fun ActivityForm(modifier: Modifier= Modifier)
                     disabledContentColor = Color.Black.copy(alpha = 0.5f)
                 )
             ) {
-                Text("Submit",
+                Text(
+                    "Submit",
                     fontWeight = FontWeight.Bold)
             }
         }
     }
+    if (showDatePicker.value) {
+        DatePickerDialog(
+            onDismissRequest = { showDatePicker.value = false },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        val selectedDate = datePickerState.selectedDateMillis
+                        if (selectedDate != null) {
+                            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                            textTanggalLahir = formatter.format(Date(selectedDate))
+                        }
+                        showDatePicker.value = false
+                    }
+                ) { Text("OK")}
+            },
+            dismissButton = {
+                TextButton(onClick = {showDatePicker.value = false})
+                {Text("Batalkan") }
+            }
+        ) {
+            DatePicker(state = datePickerState)
+        }
+    }
 }
+
 

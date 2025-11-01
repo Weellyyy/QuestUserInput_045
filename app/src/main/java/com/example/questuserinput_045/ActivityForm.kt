@@ -2,6 +2,8 @@ package com.example.questuserinput_045
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -132,28 +134,28 @@ fun ActivityForm(modifier: Modifier= Modifier)
                     cursorColor = Color.White
                 )
             )
-            TextField(
-                value = textKotaAsal,
-                onValueChange = { textKotaAsal = it },
-                label = { Text("Kota Asal") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 10.dp),
-                shape = RoundedCornerShape(16.dp),
-                singleLine = true,
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White.copy(alpha = 0.3f),
-                    unfocusedContainerColor = Color.White.copy(alpha = 0.3f),
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedLabelColor = Color.White,
-                    unfocusedLabelColor = Color.White.copy(alpha = 0.7f),
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White,
-                    cursorColor = Color.White
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                // Tanggal Lahir (terhubung ke variabel `text...`)
+                TextField(
+                    value = textTanggalLahir,
+                    onValueChange = {},
+                    label = { Text("Tanggal Lahir") },
+                    modifier = Modifier
+                        .weight(2f)
+                        .padding(bottom = 10.dp)
+                        .clickable { showDatePicker.value = true },
+                    shape = RoundedCornerShape(16.dp),
+                    singleLine = true,
+                    readOnly = true,
+                    colors = TextFieldDefaults.colors(
+                        disabledContainerColor = Color.White.copy(alpha = 0.3f),
+                        disabledIndicatorColor = Color.Transparent,
+                        disabledLabelColor = Color.White.copy(alpha = 0.7f),
+                        disabledTextColor = Color.White
+                    ),
+                    enabled = false
                 )
-            )
-
+            }
         }
     }
 }

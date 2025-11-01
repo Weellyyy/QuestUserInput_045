@@ -88,7 +88,16 @@ fun ActivityForm(modifier: Modifier= Modifier)
                 thickness = dimensionResource(R.dimen.divider_tipis),
                 color = Color.DarkGray
             )
-
+            TextField(
+                value = textNamaLengkap,
+                onValueChange = { textNamaLengkap = it },
+                label = { Text("Nama Lengkap") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp),
+                shape = RoundedCornerShape(16.dp),
+                singleLine = true,
+            )
         }
     }
 }

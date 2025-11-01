@@ -114,6 +114,27 @@ fun ActivityForm(modifier: Modifier= Modifier)
             TextField(
                 value = textKotaAsal,
                 onValueChange = { textKotaAsal = it },
+                label = { Text("Asal Daerah") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp),
+                shape = RoundedCornerShape(16.dp),
+                singleLine = true,
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White.copy(alpha = 0.3f),
+                    unfocusedContainerColor = Color.White.copy(alpha = 0.3f),
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    focusedLabelColor = Color.White,
+                    unfocusedLabelColor = Color.White.copy(alpha = 0.7f),
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    cursorColor = Color.White
+                )
+            )
+            TextField(
+                value = textKotaAsal,
+                onValueChange = { textKotaAsal = it },
                 label = { Text("Kota Asal") },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -132,6 +153,7 @@ fun ActivityForm(modifier: Modifier= Modifier)
                     cursorColor = Color.White
                 )
             )
+
         }
     }
 }

@@ -10,9 +10,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -218,6 +221,44 @@ fun ActivityForm(modifier: Modifier= Modifier)
                     unfocusedTextColor = Color.White,
                     cursorColor = Color.White
                 )
+            )
+            Text(
+                "Jenis Kelamin",
+                fontWeight = FontWeight.SemiBold,
+                color = Color.White.copy(alpha = 0.8f),
+                modifier = Modifier
+                    .fillMaxWidth()
+            )
+            Row(verticalAlignment = Alignment.CenterVertically)
+            {
+                genderList.forEach { gender ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .selectable(
+                                selected = textJenisKelamin == gender,
+                                onClick = { textJenisKelamin = gender })
+                            .padding(end = 16.dp)
+                    ) {
+                        RadioButton(
+                            selected = textJenisKelamin == gender,
+                            onClick = { textJenisKelamin = gender },
+                            colors = RadioButtonDefaults.colors(
+                                selectedColor = Color.White,
+                                unselectedColor = Color.White.copy(alpha = 0.7f)
+                            )
+                        )
+                        Text(gender, color = Color.White)
+                    }
+                }
+            }
+            Divider(
+                modifier = Modifier.padding(
+                    bottom = dimensionResource(R.dimen.padding_medium),
+                    top = dimensionResource(R.dimen.padding_medium
+                    )),
+                thickness = dimensionResource(R.dimen.padding_medium),
+                color = Color.Black
             )
         }
     }

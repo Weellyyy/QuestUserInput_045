@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.RadioButton
@@ -251,6 +253,22 @@ fun ActivityForm(modifier: Modifier= Modifier)
                         Text(gender, color = Color.White)
                     }
                 }
+            }
+            Divider(
+                modifier = Modifier.padding(
+                    bottom = dimensionResource(R.dimen.padding_small),
+                    top = dimensionResource(R.dimen.padding_small
+                    )),
+                thickness = dimensionResource(R.dimen.divider_tipis),
+                color = Color.Black
+            )
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                Checkbox(
+                    checked = isSetujuChecked,
+                    onCheckedChange = { isSetujuChecked = it },
+                    colors = CheckboxDefaults.colors(checkedColor = Color.White, uncheckedColor = Color.White.copy(alpha = 0.7f), checkmarkColor = Color.Black)
+                )
+                Text("Saya setuju", color = Color.White.copy(alpha = 0.8f), fontSize = 12.sp)
             }
             Divider(
                 modifier = Modifier.padding(

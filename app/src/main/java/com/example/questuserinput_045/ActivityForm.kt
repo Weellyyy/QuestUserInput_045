@@ -155,6 +155,27 @@ fun ActivityForm(modifier: Modifier= Modifier)
                     ),
                     enabled = false
                 )
+                TextField(
+                    value = textRt,
+                    onValueChange = { textRt = it },
+                    label = { Text("RT") },
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(bottom = 10.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    singleLine = true,
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = Color.White.copy(alpha = 0.3f),
+                        unfocusedContainerColor = Color.White.copy(alpha = 0.3f),
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        focusedLabelColor = Color.White,
+                        unfocusedLabelColor = Color.White.copy(alpha = 0.7f),
+                        focusedTextColor = Color.White,
+                        unfocusedTextColor = Color.White,
+                        cursorColor = Color.White
+                    )
+                )
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.questuserinput_045
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,5 +31,8 @@ fun ActivityForm(modifier: Modifier= Modifier)
     var jenisKelamin by remember { mutableStateOf("")  }
 
     val genderList = listOf("Laki-laki", "Perempuan" )
+
+    val showDatePicker = remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
 }
 
